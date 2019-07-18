@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">zom.fit monitor</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="book_label">Book</string>
+    <string name="my_account_label">My Account</string>
+    <string name="my_bookings_label">My Bookings</string>
+    <string name="upcoming_bookings_label">Upcoming Bookings</string>
+    <string name="completed_bookings_label">Completed Bookings</string>
+    <string name="all_cities_label">All Cities</string>
+    <string name="all_centers_label">All Centers</string>
+    <string name="email_label">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="book_now">Book Now</string>
+    <string name="booking_details">Booking Detail</string>
+    <string name="register_label">Register</string>
+    <string name="an_error_occurred_label">An Error Occurred!</string>
+    <string name="is_logged_in_label">is logged in</string>
+    <string name="user_id_label">user id</string>
+    <string name="user_name_label">user name</string>
+    <string name="user_email_label">user email</string>
+    <string name="user_password_label">user password</string>
+    <string name="user_liked_activity">user liked activity</string>
+    <string name="user_saved_center">user saved center</string>
+    <string name="centers_in_label">Centers in %s</string>
+    <string name="preference_file_key">xxxxxxxxxx</string>
+    <string name="saved_centers_label">Saved Centers</string>
+    <string name="liked_activities_label">Liked Activities</string>
+    <string name="slot_booked_message">This slot is already booked, please select another one</string>
+    <string name="zom">zom.</string>
+    <string name="fit">fit</string>
+    <string name="monitor">monitor</string>
+    <string name="activity_booked_label">Activity booked!</string>
+    <string name="login_failed_label">Login failed!</string>
+    <string name="browse_city">Browse all cities</string>
+    <string name="browse_center">Browse all centers</string>
+    <string name="browse_activity">Browse all activities</string>
+    <string name="browse">Browse</string>
+    <string name="trends">Trends</string>
+    <string name="no_of_activity">No of activities</string>
+</resources>
