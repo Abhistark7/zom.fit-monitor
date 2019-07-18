@@ -39,5 +39,11 @@
     <string name="browse_activity">Browse all activities</string>
     <string name="browse">Browse</string>
     <string name="trends">Trends</string>
-    <string name="no_of_activity">No of activities</string>
+    <string name="no_of_activity">No of activities :&#160;</string>
+    <string name="no_of_slots">No of slots :&#160;</string>
+    <string name="no_of_seats_available">No of seats available :&#160;</string>
+    <string name="no_of_seats">No of total seats :&#160;</string>
+    <string name="no_of_available_slots">No of slots available :&#160;</string>
+    <string name="no_of_center">No of centers : &#160;
+    </string>
 </resources>

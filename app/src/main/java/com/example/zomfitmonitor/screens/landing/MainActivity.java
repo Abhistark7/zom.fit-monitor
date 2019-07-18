@@ -16,6 +16,9 @@ import androidx.fragment.app.FragmentManager;
 import com.example.zomfitmonitor.R;
 import com.example.zomfitmonitor.databinding.ActivityMainBinding;
 import com.example.zomfitmonitor.model.User;
+import com.example.zomfitmonitor.screens.landing.trends.ActivityTrendFragment;
+import com.example.zomfitmonitor.screens.landing.trends.CenterTrendFragment;
+import com.example.zomfitmonitor.screens.landing.trends.TrendFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.parceler.Parcels;
@@ -24,13 +27,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements BrowseFragment.OnFragmentInteractionListener,
-        TrendsFragment.OnFragmentInteractionListener, BottomNavigationView.OnNavigationItemSelectedListener {
+        TrendFragment.OnFragmentInteractionListener, BottomNavigationView.OnNavigationItemSelectedListener,
+        CenterTrendFragment.OnFragmentInteractionListener, ActivityTrendFragment.OnFragmentInteractionListener {
 
     private static final String ARG_USER = "user";
     private ActivityMainBinding binding;
     private User user;
     final Fragment fragment1 = new BrowseFragment();
-    final Fragment fragment2 = new TrendsFragment();
+    final Fragment fragment2 = new TrendFragment();
     final FragmentManager fm = getSupportFragmentManager();
     Fragment active = fragment1;
 

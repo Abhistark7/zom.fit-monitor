@@ -20,13 +20,14 @@
             tools:context="com.example.zomfit.screens.MainActivity">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="40dp"
                 android:id="@+id/card_image"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:scaleType="centerCrop"
-                android:background="@color/colorPrimaryLight"
                 app:layout_constraintBottom_toBottomOf="parent"
                 />
 

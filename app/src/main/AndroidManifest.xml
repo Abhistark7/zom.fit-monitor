@@ -13,7 +13,8 @@
         android:roundIcon="@drawable/ic_barbell"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".screens.browse.BrowseActivity"></activity>
+        <activity android:name=".screens.browse.BrowseActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity
             android:name=".screens.landing.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>

@@ -1,6 +1,7 @@
 package com.example.zomfitmonitor.screens.landing;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -13,9 +14,14 @@ import android.view.ViewGroup;
 
 import com.example.zomfitmonitor.R;
 import com.example.zomfitmonitor.databinding.FragmentBrowseBinding;
+import com.example.zomfitmonitor.screens.browse.BrowseActivity;
 import com.example.zomfitmonitor.utils.BasicUtils;
 
 public class BrowseFragment extends Fragment {
+    private static final String ARG_BROWSE_TYPE = "arg_browse_type";
+    private static final String BROWSE_CITY = "arg_browse_city";
+    private static final String BROWSE_CENTER = "arg_browse_center";
+    private static final String BROWSE_ACTIVITY = "arg_browse_activity";
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
@@ -52,20 +58,31 @@ public class BrowseFragment extends Fragment {
 
     private void setupCityCard() {
         binding.cityCard.centerText.setText(getString(R.string.browse_city));
-        binding.cityCard.cardImage.setBackgroundColor(getResources().getColor(R.color.teal500));
-        binding.cityCard.getRoot().setOnClickListener(v -> BasicUtils.makeToast(getActivity(), "city"));
+        binding.cityCard.container.setBackgroundColor(getResources().getColor(R.color.teal500));
+        binding.cityCard.cardImage.setImageDrawable(getResources().getDrawable(R.drawable.ic_cityscape));
+        binding.cityCard.getRoot().setOnClickListener(v -> openBrowseActivity(BROWSE_CITY));
     }
 
     private void setupCenterCard() {
         binding.centerCard.centerText.setText(getString(R.string.browse_center));
-        binding.centerCard.cardImage.setBackgroundColor(getResources().getColor(R.color.purple500));
-        binding.centerCard.getRoot().setOnClickListener(v -> BasicUtils.makeToast(getActivity(), "center"));
+        binding.centerCard.container.setBackgroundColor(getResources().getColor(R.color.purple500));
+        binding.centerCard.cardImage.setImageDrawable(getResources().getDrawable(R.drawable.ic_building));
+        binding.centerCard.getRoot().setOnClickListener(v -> openBrowseActivity(BROWSE_CENTER));
     }
 
     private void setupActivityCard() {
         binding.activityCard.centerText.setText(getString(R.string.browse_activity));
-        binding.activityCard.cardImage.setBackgroundColor(getResources().getColor(R.color.green500));
-        binding.activityCard.getRoot().setOnClickListener(v -> BasicUtils.makeToast(getActivity(), "activity"));
+        binding.activityCard.container.setBackgroundColor(getResources().getColor(R.color.green500));
+        binding.activityCard.cardImage.setImageDrawable(getResources().getDrawable(R.drawable.ic_running_person));
+        binding.activityCard.getRoot().setOnClickListener(v -> openBrowseActivity(BROWSE_ACTIVITY));
+    }
+
+    private void openBrowseActivity(String browseType) {
+        Intent intent = new Intent(getActivity(), BrowseActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString(ARG_BROWSE_TYPE, browseType);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     public void onButtonPressed(Uri uri) {

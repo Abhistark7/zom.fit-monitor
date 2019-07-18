@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar"
+        android:id="@+id/contentView"
         tools:context=".screens.browse.BrowseActivity">
 
         <androidx.recyclerview.widget.RecyclerView

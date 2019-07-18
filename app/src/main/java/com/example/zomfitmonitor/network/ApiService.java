@@ -2,6 +2,7 @@ package com.example.zomfitmonitor.network;
 
 import com.example.zomfitmonitor.model.Center;
 import com.example.zomfitmonitor.model.City;
+import com.example.zomfitmonitor.model.activity.Activity;
 import com.example.zomfitmonitor.model.getactivities.GetActivitiesRequest;
 import com.example.zomfitmonitor.model.getactivities.GetActivitiesResponse;
 import com.example.zomfitmonitor.model.getcenters.GetCentersRequest;
@@ -23,6 +24,12 @@ public interface ApiService {
 
     @GET("/getAllCenters")
     Call<List<Center>> getAllCenters();
+
+    @GET("/getAllActivities")
+    Call<List<Activity>> getAllActivities();
+
+    @GET("/getTrendingActivities")
+    Call<List<Activity>> getTrendingActivities();
 
     @POST("/login")
     Call<LoginResponse> login(@Body LoginRequest loginRequest);
