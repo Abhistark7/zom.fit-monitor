@@ -46,13 +46,12 @@ public class MainActivity extends AppCompatActivity implements BrowseFragment.On
         binding.navigation.setSelectedItemId(R.id.browse);
         fm.beginTransaction().add(R.id.main_container, fragment2, "2").hide(fragment2).commit();
         fm.beginTransaction().add(R.id.main_container, fragment1, "1").commit();
-        setupBottomNavigation();
-        extract();
         initialize();
     }
 
     private void initialize() {
-
+        setupBottomNavigation();
+        extract();
     }
 
     private void setupBottomNavigation() {
