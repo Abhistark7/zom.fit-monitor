@@ -31,6 +31,9 @@ public interface ApiService {
     @GET("/getTrendingActivities")
     Call<List<Activity>> getTrendingActivities();
 
+    @GET("/getTrendingCenters")
+    Call<List<Center>> getTrendingCenters();
+
     @POST("/login")
     Call<LoginResponse> login(@Body LoginRequest loginRequest);
 

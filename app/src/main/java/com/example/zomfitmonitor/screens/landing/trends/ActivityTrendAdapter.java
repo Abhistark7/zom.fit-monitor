@@ -65,7 +65,9 @@ public class ActivityTrendAdapter extends RecyclerView.Adapter<ActivityTrendAdap
         public void bind(Activity activity, int position) {
             binding.text1.setText(activity.name);
             binding.rank.setText(format("%s%d", HASH, position + 1));
-            binding.text2.setText(activity.bookedSlots);
+            binding.newText2.setText(String.format("%s%s",
+                    binding.getRoot().getContext().getString(R.string.total_bookings),
+                    String.valueOf(activity.bookedSlots)));
             binding.cardImage.setPaddingRelative(80, 80, 80, 80);
             ImageUtils.fetchSvg(context, activity.iconUrl, binding.cardImage);
         }

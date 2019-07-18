@@ -30,4 +30,7 @@ public class Center {
     @SerializedName("likedUserIds")
     public List<String> likedUserids;
 
+    @SerializedName("currentBookingCount")
+    public int currentBookingCount;
+
 }

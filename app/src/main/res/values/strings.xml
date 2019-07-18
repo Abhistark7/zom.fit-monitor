@@ -44,6 +44,6 @@
     <string name="no_of_seats_available">No of seats available :&#160;</string>
     <string name="no_of_seats">No of total seats :&#160;</string>
     <string name="no_of_available_slots">No of slots available :&#160;</string>
-    <string name="no_of_center">No of centers : &#160;
-    </string>
+    <string name="no_of_center">No of centers : &#160;</string>
+    <string name="total_bookings">Total Bookings : &#160;</string>
 </resources>
