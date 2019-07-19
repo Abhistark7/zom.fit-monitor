@@ -11,4 +11,9 @@
         android:icon="@drawable/ic_stat"
         android:title="@string/trends" />
 
+    <item
+        android:id="@+id/add"
+        android:icon="@drawable/ic_add"
+        android:title="@string/add" />
+
 </menu>

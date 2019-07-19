@@ -13,11 +13,23 @@
         android:roundIcon="@drawable/ic_barbell"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".screens.browse.BrowseActivity"
+        <activity android:name=".screens.add.AddTimingSlots"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity
+            android:name=".screens.add.AddActivityActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".screens.add.AddCenterActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".screens.add.AddCityActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".screens.browse.BrowseActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
             android:name=".screens.landing.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".screens.SplashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">

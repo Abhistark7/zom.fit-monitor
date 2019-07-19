@@ -39,6 +39,13 @@
     <string name="browse_activity">Browse all activities</string>
     <string name="browse">Browse</string>
     <string name="trends">Trends</string>
+    <string name="add">Add</string>
+    <string name="add_city">Add City</string>
+    <string name="seats">&#160;Seats</string>
+    <string name="add_center">Add Center</string>
+    <string name="add_activity">Add Activity</string>
+    <string name="enter_city_name">Enter City Name</string>
+    <string name="enter_city_url">Enter Image Url</string>
     <string name="no_of_activity">No of activities :&#160;</string>
     <string name="no_of_slots">No of slots :&#160;</string>
     <string name="no_of_seats_available">No of seats available :&#160;</string>
@@ -46,4 +53,17 @@
     <string name="no_of_available_slots">No of slots available :&#160;</string>
     <string name="no_of_center">No of centers : &#160;</string>
     <string name="total_bookings">Total Bookings : &#160;</string>
+    <string name="enter_center_name">Enter Center Name</string>
+    <string name="select_city">Select City</string>
+    <string name="enter_cost">Enter cost</string>
+    <string name="enter_activity_name">Enter Activity Name</string>
+    <string name="add_slot">Add Slot</string>
+    <string name="select_start_time">Select Start Time</string>
+    <string name="select_end_time">Select End Time</string>
+    <string name="select_date">Select Date</string>
+    <string name="add_slot_1">Add Slot 1</string>
+    <string name="add_slot_2">Add Slot 2</string>
+    <string name="add_slot_3">Add Slot 3</string>
+    <string name="add_slot_4">Add Slot 4</string>
+    <string name="enter_total_seats">Enter Total Seats</string>
 </resources>

@@ -1,14 +1,19 @@
 package com.example.zomfitmonitor.network;
 
+import com.example.zomfitmonitor.model.BaseResponse;
 import com.example.zomfitmonitor.model.Center;
 import com.example.zomfitmonitor.model.City;
 import com.example.zomfitmonitor.model.activity.Activity;
+import com.example.zomfitmonitor.model.add.AddActivityRequest;
+import com.example.zomfitmonitor.model.add.AddCenterRequest;
+import com.example.zomfitmonitor.model.add.AddCityRequest;
 import com.example.zomfitmonitor.model.getactivities.GetActivitiesRequest;
 import com.example.zomfitmonitor.model.getactivities.GetActivitiesResponse;
 import com.example.zomfitmonitor.model.getcenters.GetCentersRequest;
 import com.example.zomfitmonitor.model.getcenters.GetCentersResponse;
 import com.example.zomfitmonitor.model.login.LoginRequest;
 import com.example.zomfitmonitor.model.login.LoginResponse;
+import com.example.zomfitmonitor.screens.add.AddActivityActivity;
 
 import java.util.List;
 
@@ -42,4 +47,13 @@ public interface ApiService {
 
     @POST("/getActivitiesById")
     Call<GetActivitiesResponse> getActivityById(@Body GetActivitiesRequest getActivitiesRequest);
+
+    @POST("/addCity")
+    Call<BaseResponse> addCity(@Body AddCityRequest request);
+
+    @POST("/addCenter")
+    Call<BaseResponse> addCenter(@Body AddCenterRequest request);
+
+    @POST("/addActivity")
+    Call<BaseResponse> addActivity(@Body AddActivityRequest request);
 }

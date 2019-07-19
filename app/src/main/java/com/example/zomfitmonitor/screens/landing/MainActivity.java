@@ -28,13 +28,15 @@ import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements BrowseFragment.OnFragmentInteractionListener,
         TrendFragment.OnFragmentInteractionListener, BottomNavigationView.OnNavigationItemSelectedListener,
-        CenterTrendFragment.OnFragmentInteractionListener, ActivityTrendFragment.OnFragmentInteractionListener {
+        CenterTrendFragment.OnFragmentInteractionListener, ActivityTrendFragment.OnFragmentInteractionListener,
+        AddFragment.OnFragmentInteractionListener{
 
     private static final String ARG_USER = "user";
     private ActivityMainBinding binding;
     private User user;
     final Fragment fragment1 = new BrowseFragment();
     final Fragment fragment2 = new TrendFragment();
+    final Fragment fragment3 = new AddFragment();
     final FragmentManager fm = getSupportFragmentManager();
     Fragment active = fragment1;
 
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements BrowseFragment.On
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         binding.navigation.setSelectedItemId(R.id.browse);
         fm.beginTransaction().add(R.id.main_container, fragment2, "2").hide(fragment2).commit();
+        fm.beginTransaction().add(R.id.main_container, fragment3, "3").hide(fragment3).commit();
         fm.beginTransaction().add(R.id.main_container, fragment1, "1").commit();
         initialize();
     }
@@ -100,6 +103,10 @@ public class MainActivity extends AppCompatActivity implements BrowseFragment.On
             case R.id.trends:
                 fm.beginTransaction().hide(active).show(fragment2).commit();
                 active = fragment2;
+                return true;
+            case R.id.add:
+                fm.beginTransaction().hide(active).show(fragment3).commit();
+                active = fragment3;
                 return true;
         }
         return false;
