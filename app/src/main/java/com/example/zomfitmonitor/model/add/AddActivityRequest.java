@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import org.parceler.Parcel;
 
-import java.util.List;
+import java.util.ArrayList;
 
 @Parcel
 public class AddActivityRequest {
@@ -22,5 +22,6 @@ public class AddActivityRequest {
     @SerializedName("centerName")
     public String centerName;
 
-    public List<Timing> timingList;
+    @SerializedName("timingList")
+    public ArrayList<Timing> timingList;
 }

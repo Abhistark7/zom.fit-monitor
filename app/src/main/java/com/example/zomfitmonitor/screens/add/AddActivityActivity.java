@@ -3,6 +3,7 @@ package com.example.zomfitmonitor.screens.add;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -11,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -23,6 +25,8 @@ import com.example.zomfitmonitor.model.activity.Timing;
 import com.example.zomfitmonitor.model.add.AddActivityRequest;
 import com.example.zomfitmonitor.network.ApiService;
 import com.example.zomfitmonitor.utils.BasicUtils;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +50,7 @@ public class AddActivityActivity extends AppCompatActivity {
     private static final String ARG_TOTAL_SEATS = "arg_total_seats";
     private static final String HYPHEN = " - ";
     private static final String COMMA = ", ";
-    private int slotsVisible = 0;
+    private static final String TIMING_LIST = "timinig_list";
     private String startTime;
     private String endTime;
     private String date;
@@ -60,12 +64,15 @@ public class AddActivityActivity extends AppCompatActivity {
     private Timing timing2;
     private Timing timing3;
     private Timing timing4;
-    private List<Timing> timingList = new ArrayList<>();
+    private ArrayList<Timing> timingList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_activity);
+        if(savedInstanceState != null && savedInstanceState.containsKey(TIMING_LIST)) {
+            timingList = savedInstanceState.getParcelableArrayList(TIMING_LIST);
+        }
         initialize();
     }
 
@@ -94,22 +101,22 @@ public class AddActivityActivity extends AppCompatActivity {
     private void setupAddSlot() {
         binding.slot1.editText.setOnFocusChangeListener((view, b) -> {
             if(b) {
-                openAddSlot(slotsVisible);
+                openAddSlot(SLOT_ONE);
             }
         });
         binding.slot2.editText.setOnFocusChangeListener((view, b) -> {
             if(b) {
-                openAddSlot(slotsVisible);
+                openAddSlot(SLOT_TWO);
             }
         });
         binding.slot3.editText.setOnFocusChangeListener((view, b) -> {
             if(b) {
-                openAddSlot(slotsVisible);
+                openAddSlot(SLOT_THREE);
             }
         });
         binding.slot4.editText.setOnFocusChangeListener((view, b) -> {
             if(b) {
-                openAddSlot(slotsVisible);
+                openAddSlot(SLOT_FOUR);
             }
         });
     }
@@ -170,7 +177,7 @@ public class AddActivityActivity extends AppCompatActivity {
         AddActivityRequest request = new AddActivityRequest();
         request.activityName = binding.enterCityName.editText.getText().toString();
         request.activityImageUrl = binding.enterCityImage.editText.getText().toString();
-        request.cost = binding.enterCost.editText.toString();
+        request.cost = binding.enterCost.editText.getText().toString();
         request.centerName = selectedCenter;
         request.timingList = timingList;
         apiService.addActivity(request).enqueue(new Callback<BaseResponse>() {
@@ -245,25 +252,10 @@ public class AddActivityActivity extends AppCompatActivity {
         });
     }
 
-    private void openAddSlot(int slotNumber) {
-        String selectedSlot = null;
-        switch (slotNumber) {
-            case 0:
-                selectedSlot = SLOT_ONE;
-                break;
-            case 1:
-                selectedSlot = SLOT_TWO;
-                break;
-            case 2:
-                selectedSlot = SLOT_THREE;
-                break;
-            case 3:
-                selectedSlot = SLOT_FOUR;
-                break;
-        }
+    private void openAddSlot(String slotNumber) {
         Intent intent = new Intent(AddActivityActivity.this, AddTimingSlots.class);
         Bundle bundle = new Bundle();
-        bundle.putString(ARG_SLOT_NUMBER, selectedSlot);
+        bundle.putString(ARG_SLOT_NUMBER, slotNumber);
         intent.putExtras(bundle);
         startActivityForResult(intent, 1);
     }
@@ -278,18 +270,17 @@ public class AddActivityActivity extends AppCompatActivity {
                 date = data.getStringExtra(ARG_DATE);
                 totalSeats = data.getStringExtra(ARG_TOTAL_SEATS);
                 String slotNumber = data.getStringExtra(ARG_SLOT_NUMBER);
-                updateTimingList(slotsVisible, startTime, endTime, date, totalSeats);
+                updateTimingList(slotNumber, startTime, endTime, date, totalSeats);
                 updateSlot(slotNumber, startTime, endTime, date, totalSeats);
-                slotsVisible++;
                 removeEditTextFocus();
             }
         }
     }
 
 
-    private void updateTimingList(int slotsVisible, String startTime, String endTime, String date, String totalSeats) {
-        switch (slotsVisible) {
-            case 0:
+    private void updateTimingList(String slotNumber, String startTime, String endTime, String date, String totalSeats) {
+        switch (slotNumber) {
+            case SLOT_ONE:
                 timing1 = new Timing();
                 timing1.bookedCount = 0;
                 timing1.isAvailable = true;
@@ -297,7 +288,7 @@ public class AddActivityActivity extends AppCompatActivity {
                 timing1.time = startTime + HYPHEN + endTime;
                 timing1.maxCount = Integer.valueOf(totalSeats);
                 break;
-            case 1:
+            case SLOT_TWO:
                 timing2 = new Timing();
                 timing2.bookedCount = 0;
                 timing2.isAvailable = true;
@@ -305,7 +296,7 @@ public class AddActivityActivity extends AppCompatActivity {
                 timing2.time = startTime + HYPHEN + endTime;
                 timing2.maxCount = Integer.valueOf(totalSeats);
                 break;
-            case 2:
+            case SLOT_THREE:
                 timing3 = new Timing();
                 timing3.bookedCount = 0;
                 timing3.isAvailable = true;
@@ -313,7 +304,7 @@ public class AddActivityActivity extends AppCompatActivity {
                 timing3.time = startTime + HYPHEN + endTime;
                 timing3.maxCount = Integer.valueOf(totalSeats);
                 break;
-            case 3:
+            case SLOT_FOUR:
                 timing4 = new Timing();
                 timing4.bookedCount = 0;
                 timing4.isAvailable = true;
@@ -375,5 +366,11 @@ public class AddActivityActivity extends AppCompatActivity {
     protected void onResume() {
         removeEditTextFocus();
         super.onResume();
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        outState.putParcelableArrayList(TIMING_LIST, timingList);
+        super.onSaveInstanceState(outState, outPersistentState);
     }
 }

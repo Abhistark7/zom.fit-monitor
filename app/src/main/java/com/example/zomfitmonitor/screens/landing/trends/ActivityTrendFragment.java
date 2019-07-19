@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,10 +59,15 @@ public class ActivityTrendFragment extends Fragment {
     }
 
     private void initialize() {
+        setupSwipeRefresh();
         showLoadingView();
         retrofit = BasicUtils.connectApi();
         setUpCenterRecyclerView();
         loadAllActivity();
+    }
+
+    private void setupSwipeRefresh() {
+        binding.swipe.setOnRefreshListener(() -> loadAllActivity());
     }
 
     private void setUpCenterRecyclerView() {
@@ -78,11 +84,17 @@ public class ActivityTrendFragment extends Fragment {
             public void onResponse(Call<List<Activity>> call, Response<List<Activity>> response) {
                 showContentView();
                 adapter.update(response.body());
+                if(binding.swipe.isRefreshing()) {
+                    binding.swipe.setRefreshing(false);
+                }
             }
 
             @Override
             public void onFailure(Call<List<Activity>> call, Throwable t) {
                 showErrorView();
+                if(binding.swipe.isRefreshing()) {
+                    binding.swipe.setRefreshing(false);
+                }
             }
         });
     }
